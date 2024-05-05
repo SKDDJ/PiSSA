@@ -1,18 +1,23 @@
 #!/bin/bash
-# hp from lora
+
 export TRANSFORMERS_CACHE=/root/.cache/huggingface/hub
 export HF_HOME=/root/.cache/huggingface
 export XDG_CACHE_HOME=/root/.cache
 
-# LATEST LoRA config
+# LATEST
+# roberta large LoRA 
+declare -A epochs=(["mnli"]=10 ["sst2"]=10 ["mrpc"]=20 ["cola"]=20 ["qnli"]=10 ["qqp"]=20 ["rte"]=20  ["stsb"]=30 )
 
-declare -A epochs=(["mnli"]=30 ["sst2"]=60 ["mrpc"]=30 ["cola"]=80 ["qnli"]=25 ["qqp"]=25 ["rte"]=80  ["stsb"]=40 )
 
-declare -A bs=(["mnli"]=64 ["sst2"]=64 ["mrpc"]=64 ["cola"]=64 ["qnli"]=64 ["qqp"]=64 ["rte"]=64  ["stsb"]=64 )
+# roberta large LoRA
+declare -A bs=(["mnli"]=32 ["sst2"]=32 ["mrpc"]=32 ["cola"]=32 ["qnli"]=32 ["qqp"]=32 ["rte"]=32  ["stsb"]=32 )
 
-declare -A ml=(["mnli"]=512 ["sst2"]=512 ["mrpc"]=512 ["cola"]=512 ["qnli"]=512 ["qqp"]=512 ["rte"]=512  ["stsb"]=512 )
-# here I noticed that the learning rate for mnli is 5e-4 will crash the mnli task, so I will reduce it to 4e-4
-declare -A lr=(["mnli"]="5e-4" ["sst2"]="5e-4" ["mrpc"]="4e-4" ["cola"]="4e-4" ["qnli"]="4e-4" ["qqp"]="5e-4" ["rte"]="5e-4"  ["stsb"]="4e-4" )
+
+# roberta large LoRA
+declare -A ml=(["mnli"]=128 ["sst2"]=128 ["mrpc"]=512 ["cola"]=128 ["qnli"]=512 ["qqp"]=512 ["rte"]=512  ["stsb"]=512 )
+
+# roberta large LoRA
+declare -A lr=(["mnli"]="3e-4" ["sst2"]="4e-4" ["mrpc"]="3e-4" ["cola"]="2e-4" ["qnli"]="2e-4" ["qqp"]="3e-4" ["rte"]="4e-4"  ["stsb"]="2e-4" )
 
 declare -A metrics=(["mnli"]="accuracy" ["mrpc"]="accuracy" ["qnli"]="accuracy" ["qqp"]="accuracy" ["rte"]="accuracy" ["sst2"]="accuracy" ["stsb"]="pearson" ["cola"]="matthews_correlation")
 
@@ -26,16 +31,16 @@ run(){
   rank=8 # paper # rank = 8
   l_num=12
   seed=42
-  lora_alpha="8"
+  lora_alpha="16"
   target_modules="query value"
   lora_dropout=0.
   lora_bias=none
   lora_task_type=SEQ_CLS
-  export WANDB_PROJECT=pissa_base_hp_lora_glue
-  export WANDB_NAME=roberta-base-pissa-${task_name}-r-${rank}-target_modules-${target_modules}-seed-${seed}-bs-${per_device_train_batch_size}-lr-${learning_rate}-epochs-${num_train_epochs}
+  export WANDB_PROJECT=5-5-bf16-pissa_large_hp_lora_glue
+  export WANDB_NAME=large-pissa-${task_name}-r-${rank}-target_modules-${target_modules}-seed-${seed}-bs-${per_device_train_batch_size}-lr-${learning_rate}-epochs-${num_train_epochs}
 
   HF_ENDPOINT=https://hf-mirror.com accelerate launch --num_processes 5 --main_process_port 26698 ./run_glue_pissa.py \
-  --model_name_or_path FacebookAI/roberta-base  \
+  --model_name_or_path FacebookAI/roberta-large  \
   --task_name ${task_name} \
   --do_train --do_eval \
   --max_seq_length ${ml[$1]} \
@@ -59,8 +64,6 @@ run(){
 }
 
 task_base=('cola' 'mrpc' 'mnli' 'qqp' 'qnli' 'rte' 'sst2' 'stsb' )
-
-# 707w params cola for 50mins... for 4 cards
 
 for task in "${task_base[@]}"; do
     run $task

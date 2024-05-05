@@ -1,0 +1,288 @@
+05/05/2024 16:03:10 - WARNING - __main__ - Process rank: 0, device: cuda:0, n_gpu: 1distributed training: True, 16-bits training: False
+05/05/2024 16:03:10 - INFO - __main__ - Training/evaluation parameters TrainingArguments(
+_n_gpu=1,
+accelerator_config={'split_batches': False, 'dispatch_batches': None, 'even_batches': True, 'use_seedable_sampler': True, 'gradient_accumulation_kwargs': None},
+adafactor=False,
+adam_beta1=0.9,
+adam_beta2=0.999,
+adam_epsilon=1e-08,
+auto_find_batch_size=False,
+bf16=False,
+bf16_full_eval=False,
+data_seed=None,
+dataloader_drop_last=False,
+dataloader_num_workers=0,
+dataloader_persistent_workers=False,
+dataloader_pin_memory=True,
+dataloader_prefetch_factor=None,
+ddp_backend=None,
+ddp_broadcast_buffers=None,
+ddp_bucket_cap_mb=None,
+ddp_find_unused_parameters=None,
+ddp_timeout=1800,
+debug=[],
+deepspeed=None,
+disable_tqdm=False,
+dispatch_batches=None,
+do_eval=True,
+do_predict=False,
+do_train=True,
+eval_accumulation_steps=None,
+eval_delay=0,
+eval_do_concat_batches=True,
+eval_steps=None,
+evaluation_strategy=epoch,
+fp16=False,
+fp16_backend=auto,
+fp16_full_eval=False,
+fp16_opt_level=O1,
+fsdp=[],
+fsdp_config={'min_num_params': 0, 'xla': False, 'xla_fsdp_v2': False, 'xla_fsdp_grad_ckpt': False},
+fsdp_min_num_params=0,
+fsdp_transformer_layer_cls_to_wrap=None,
+full_determinism=False,
+gradient_accumulation_steps=1,
+gradient_checkpointing=False,
+gradient_checkpointing_kwargs=None,
+greater_is_better=True,
+group_by_length=False,
+half_precision_backend=auto,
+hub_always_push=False,
+hub_model_id=None,
+hub_private_repo=False,
+hub_strategy=every_save,
+hub_token=<HUB_TOKEN>,
+ignore_data_skip=False,
+include_inputs_for_metrics=False,
+include_num_input_tokens_seen=False,
+include_tokens_per_second=False,
+jit_mode_eval=False,
+label_names=None,
+label_smoothing_factor=0.0,
+learning_rate=0.0002,
+length_column_name=length,
+load_best_model_at_end=True,
+local_rank=0,
+log_level=passive,
+log_level_replica=warning,
+log_on_each_node=True,
+logging_dir=/log,
+logging_first_step=False,
+logging_nan_inf_filter=True,
+logging_steps=10,
+logging_strategy=steps,
+lr_scheduler_kwargs={},
+lr_scheduler_type=linear,
+max_grad_norm=1.0,
+max_steps=-1,
+metric_for_best_model=matthews_correlation,
+mp_parameters=,
+neftune_noise_alpha=None,
+no_cuda=False,
+num_train_epochs=20.0,
+optim=adamw_torch,
+optim_args=None,
+optim_target_modules=None,
+output_dir=/model,
+overwrite_output_dir=True,
+past_index=-1,
+per_device_eval_batch_size=32,
+per_device_train_batch_size=32,
+prediction_loss_only=False,
+push_to_hub=False,
+push_to_hub_model_id=None,
+push_to_hub_organization=None,
+push_to_hub_token=<PUSH_TO_HUB_TOKEN>,
+ray_scope=last,
+remove_unused_columns=True,
+report_to=['wandb'],
+resume_from_checkpoint=None,
+run_name=/model,
+save_on_each_node=False,
+save_only_model=False,
+save_safetensors=True,
+save_steps=500,
+save_strategy=epoch,
+save_total_limit=None,
+seed=42,
+skip_memory_metrics=True,
+split_batches=None,
+tf32=None,
+torch_compile=False,
+torch_compile_backend=None,
+torch_compile_mode=None,
+torchdynamo=None,
+tpu_metrics_debug=False,
+tpu_num_cores=None,
+use_cpu=False,
+use_ipex=False,
+use_legacy_prediction_loop=False,
+use_mps_device=False,
+warmup_ratio=0.06,
+warmup_steps=0,
+weight_decay=0.0,
+)
+05/05/2024 16:03:10 - INFO - __main__ - Model parameters ModelArguments(model_name_or_path='FacebookAI/roberta-large', lora_path=None, l_num=None, mode='base', config_name=None, rank=[8], lora_alpha=[768], target_modules=['query', 'value'], lora_dropout=0.0, lora_bias='none', lora_task_type='SEQ_CLS', tokenizer_name=None, cache_dir=None, use_fast_tokenizer=True, model_revision='main', use_auth_token=False, ignore_mismatched_sizes=False)
+05/05/2024 16:03:10 - WARNING - __main__ - Process rank: 2, device: cuda:2, n_gpu: 1distributed training: True, 16-bits training: False
+05/05/2024 16:03:10 - WARNING - __main__ - Process rank: 4, device: cuda:4, n_gpu: 1distributed training: True, 16-bits training: False
+05/05/2024 16:03:11 - WARNING - __main__ - Process rank: 3, device: cuda:3, n_gpu: 1distributed training: True, 16-bits training: False
+05/05/2024 16:03:11 - WARNING - __main__ - Process rank: 1, device: cuda:1, n_gpu: 1distributed training: True, 16-bits training: False
+05/05/2024 16:03:51 - INFO - datasets.builder - Overwrite dataset info from restored data version if exists.
+05/05/2024 16:03:51 - INFO - datasets.info - Loading Dataset info from /root/.cache/huggingface/datasets/glue/cola/0.0.0/bcdcba79d07bc864c1c254ccfcedcce55bcc9a8c
+05/05/2024 16:03:51 - INFO - datasets.builder - Found cached dataset glue (/root/.cache/huggingface/datasets/glue/cola/0.0.0/bcdcba79d07bc864c1c254ccfcedcce55bcc9a8c)
+05/05/2024 16:03:51 - INFO - datasets.info - Loading Dataset info from /root/.cache/huggingface/datasets/glue/cola/0.0.0/bcdcba79d07bc864c1c254ccfcedcce55bcc9a8c
+*** PiSSA !!! ***
+                                                                                                    get_PiSSA_PEFT_model...*** PiSSA !!! ***
+                                                                                                    get_PiSSA_PEFT_model...*** PiSSA !!! ***
+                                                                                                    get_PiSSA_PEFT_model...*** PiSSA !!! ***
+*** PiSSA !!! ***
+                                                                                                    get_PiSSA_PEFT_model...                                                                                                    get_PiSSA_PEFT_model...                                                                                                    get_PiSSA_PEFT_model[32m...[DONE][0m[34m	548.72ms[0m
+*** Parameter number after share ***
+*** label and id ***
+{'unacceptable': 0, 'acceptable': 1}
+                                                                                                    get_PiSSA_PEFT_model[32m...[DONE][0m[34m	597.88ms[0m
+*** Parameter number after share ***
+                                                                                                    get_PiSSA_PEFT_model[32m...[DONE][0m[34m	590.36ms[0m
+*** Parameter number after share ***
+*** label and id ***
+{'unacceptable': 0, 'acceptable': 1}
+*** label and id ***
+{'unacceptable': 0, 'acceptable': 1}
+                                                                                                    get_PiSSA_PEFT_model[32m...[DONE][0m[34m	621.33ms[0m
+*** Parameter number after share ***
+pissa params: 786,432 || trainable params: 1,838,082 || all params: 357,199,876 || trainable%: 0.5145808057335384
+pissa params: 786,432 || trainable params(wo classfier): 1,838,082 || all params: 357,199,876 || trainable%: 0.5145808057335384
+                                                                                                    get_PiSSA_PEFT_model[32m...[DONE][0m[34m	631.38ms[0m
+*** Parameter number after share ***
+base_model.model.module.roberta.encoder.layer.0.attention.self.query.lora_A.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.0.attention.self.query.lora_B.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.0.attention.self.value.lora_A.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.0.attention.self.value.lora_B.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.1.attention.self.query.lora_A.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.1.attention.self.query.lora_B.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.1.attention.self.value.lora_A.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.1.attention.self.value.lora_B.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.2.attention.self.query.lora_A.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.2.attention.self.query.lora_B.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.2.attention.self.value.lora_A.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.2.attention.self.value.lora_B.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.3.attention.self.query.lora_A.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.3.attention.self.query.lora_B.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.3.attention.self.value.lora_A.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.3.attention.self.value.lora_B.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.4.attention.self.query.lora_A.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.4.attention.self.query.lora_B.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.4.attention.self.value.lora_A.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.4.attention.self.value.lora_B.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.5.attention.self.query.lora_A.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.5.attention.self.query.lora_B.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.5.attention.self.value.lora_A.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.5.attention.self.value.lora_B.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.6.attention.self.query.lora_A.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.6.attention.self.query.lora_B.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.6.attention.self.value.lora_A.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.6.attention.self.value.lora_B.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.7.attention.self.query.lora_A.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.7.attention.self.query.lora_B.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.7.attention.self.value.lora_A.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.7.attention.self.value.lora_B.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.8.attention.self.query.lora_A.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.8.attention.self.query.lora_B.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.8.attention.self.value.lora_A.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.8.attention.self.value.lora_B.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.9.attention.self.query.lora_A.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.9.attention.self.query.lora_B.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.9.attention.self.value.lora_A.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.9.attention.self.value.lora_B.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.10.attention.self.query.lora_A.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.10.attention.self.query.lora_B.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.10.attention.self.value.lora_A.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.10.attention.self.value.lora_B.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.11.attention.self.query.lora_A.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.11.attention.self.query.lora_B.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.11.attention.self.value.lora_A.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.11.attention.self.value.lora_B.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.12.attention.self.query.lora_A.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.12.attention.self.query.lora_B.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.12.attention.self.value.lora_A.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.12.attention.self.value.lora_B.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.13.attention.self.query.lora_A.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.13.attention.self.query.lora_B.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.13.attention.self.value.lora_A.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.13.attention.self.value.lora_B.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.14.attention.self.query.lora_A.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.14.attention.self.query.lora_B.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.14.attention.self.value.lora_A.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.14.attention.self.value.lora_B.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.15.attention.self.query.lora_A.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.15.attention.self.query.lora_B.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.15.attention.self.value.lora_A.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.15.attention.self.value.lora_B.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.16.attention.self.query.lora_A.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.16.attention.self.query.lora_B.default.weight 是可训练的: True*** label and id ***
+
+{'unacceptable': 0, 'acceptable': 1}
+base_model.model.module.roberta.encoder.layer.16.attention.self.value.lora_A.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.16.attention.self.value.lora_B.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.17.attention.self.query.lora_A.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.17.attention.self.query.lora_B.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.17.attention.self.value.lora_A.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.17.attention.self.value.lora_B.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.18.attention.self.query.lora_A.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.18.attention.self.query.lora_B.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.18.attention.self.value.lora_A.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.18.attention.self.value.lora_B.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.19.attention.self.query.lora_A.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.19.attention.self.query.lora_B.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.19.attention.self.value.lora_A.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.19.attention.self.value.lora_B.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.20.attention.self.query.lora_A.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.20.attention.self.query.lora_B.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.20.attention.self.value.lora_A.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.20.attention.self.value.lora_B.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.21.attention.self.query.lora_A.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.21.attention.self.query.lora_B.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.21.attention.self.value.lora_A.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.21.attention.self.value.lora_B.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.22.attention.self.query.lora_A.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.22.attention.self.query.lora_B.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.22.attention.self.value.lora_A.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.22.attention.self.value.lora_B.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.23.attention.self.query.lora_A.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.23.attention.self.query.lora_B.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.23.attention.self.value.lora_A.default.weight 是可训练的: True
+base_model.model.module.roberta.encoder.layer.23.attention.self.value.lora_B.default.weight 是可训练的: True
+base_model.model.module.classifier.modules_to_save.default.dense.weight 是可训练的: True
+base_model.model.module.classifier.modules_to_save.default.dense.bias 是可训练的: True
+base_model.model.module.classifier.modules_to_save.default.out_proj.weight 是可训练的: True
+base_model.model.module.classifier.modules_to_save.default.out_proj.bias 是可训练的: True
+*** label and id ***
+{'unacceptable': 0, 'acceptable': 1}
+05/05/2024 16:04:08 - INFO - datasets.arrow_dataset - Loading cached processed dataset at /root/.cache/huggingface/datasets/glue/cola/0.0.0/bcdcba79d07bc864c1c254ccfcedcce55bcc9a8c/cache-91090868ffd71e49.arrow
+05/05/2024 16:04:08 - INFO - datasets.arrow_dataset - Loading cached processed dataset at /root/.cache/huggingface/datasets/glue/cola/0.0.0/bcdcba79d07bc864c1c254ccfcedcce55bcc9a8c/cache-a096c5a92d476af2.arrow
+05/05/2024 16:04:08 - INFO - datasets.arrow_dataset - Loading cached processed dataset at /root/.cache/huggingface/datasets/glue/cola/0.0.0/bcdcba79d07bc864c1c254ccfcedcce55bcc9a8c/cache-692f32fb07b86a99.arrow
+05/05/2024 16:04:08 - INFO - __main__ - Sample 1824 of the training set: {'sentence': 'I acknowledged that my father, he was tight as an owl.', 'label': 0, 'idx': 1824, 'input_ids': [0, 100, 5055, 14, 127, 1150, 6, 37, 21, 3229, 25, 41, 37323, 4, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], 'attention_mask': [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}.
+05/05/2024 16:04:08 - INFO - __main__ - Sample 409 of the training set: {'sentence': 'For him to do that would be a mistake.', 'label': 1, 'idx': 409, 'input_ids': [0, 2709, 123, 7, 109, 14, 74, 28, 10, 5021, 4, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], 'attention_mask': [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}.
+05/05/2024 16:04:08 - INFO - __main__ - Sample 4506 of the training set: {'sentence': 'Mary sang a song, but Lee never did.', 'label': 1, 'idx': 4506, 'input_ids': [0, 24877, 11944, 10, 2214, 6, 53, 2094, 393, 222, 4, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], 'attention_mask': [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}.
+========================================
+hello! PiSSA
+========================================
+hello! PiSSA
+========================================
+hello! PiSSA
+========================================
+hello! PiSSA
+========================================
+hello! PiSSA
+{'loss': 0.8068, 'grad_norm': 9.17017650604248, 'learning_rate': 3.0769230769230774e-05, 'epoch': 0.19}
+{'loss': 0.6563, 'grad_norm': 18.01020050048828, 'learning_rate': 6.153846153846155e-05, 'epoch': 0.37}
+{'loss': 0.5974, 'grad_norm': 4.640515327453613, 'learning_rate': 9.230769230769232e-05, 'epoch': 0.56}
+{'loss': 0.498, 'grad_norm': 19.407560348510742, 'learning_rate': 0.0001230769230769231, 'epoch': 0.74}
+{'loss': 0.4611, 'grad_norm': 20.22886848449707, 'learning_rate': 0.00015384615384615385, 'epoch': 0.93}
+{'eval_loss': 0.529469907283783, 'eval_matthews_correlation': 0.4984147011250188, 'eval_runtime': 0.8394, 'eval_samples_per_second': 1242.605, 'eval_steps_per_second': 8.34, 'epoch': 1.0}
+{'loss': 0.4658, 'grad_norm': 20.614431381225586, 'learning_rate': 0.00018461538461538463, 'epoch': 1.11}
+{'loss': 0.4501, 'grad_norm': 38.54009246826172, 'learning_rate': 0.00019901477832512317, 'epoch': 1.3}
+{'loss': 0.4415, 'grad_norm': 49.586952209472656, 'learning_rate': 0.00019704433497536947, 'epoch': 1.48}
+{'loss': 0.4473, 'grad_norm': 19.201265335083008, 'learning_rate': 0.00019507389162561577, 'epoch': 1.67}
+{'loss': 0.4275, 'grad_norm': 28.214712142944336, 'learning_rate': 0.0001931034482758621, 'epoch': 1.85}
+{'eval_loss': 0.5284034609794617, 'eval_matthews_correlation': 0.5359216286120269, 'eval_runtime': 0.8024, 'eval_samples_per_second': 1299.788, 'eval_steps_per_second': 8.723, 'epoch': 2.0}
