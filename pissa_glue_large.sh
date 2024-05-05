@@ -19,7 +19,7 @@ declare -A lr=(["mnli"]="4e-4" ["sst2"]="4e-4" ["mrpc"]="3e-4" ["cola"]="2e-4" [
 
 declare -A metrics=(["mnli"]="accuracy" ["mrpc"]="accuracy" ["qnli"]="accuracy" ["qqp"]="accuracy" ["rte"]="accuracy" ["sst2"]="accuracy" ["stsb"]="pearson" ["cola"]="matthews_correlation")
 
-# export WANDB_MODE=offline
+export WANDB_MODE=offline
 
 run(){
   task_name=$1

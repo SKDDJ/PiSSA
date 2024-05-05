@@ -31,10 +31,10 @@ run(){
   lora_dropout=0.
   lora_bias=none
   lora_task_type=SEQ_CLS
-  export WANDB_PROJECT=pissa_base_hp_lora_glue
-  export WANDB_NAME=roberta-base-pissa-${task_name}-r-${rank}-target_modules-${target_modules}-seed-${seed}-bs-${per_device_train_batch_size}-lr-${learning_rate}-epochs-${num_train_epochs}
+  export WANDB_PROJECT=5-5-bf16-pissa_base_hp_lora_glue
+  export WANDB_NAME=base-pissa-${task_name}-r-${rank}-target_modules-${target_modules}-seed-${seed}-bs-${per_device_train_batch_size}-lr-${learning_rate}-epochs-${num_train_epochs}
 
-  HF_ENDPOINT=https://hf-mirror.com accelerate launch --num_processes 5 --main_process_port 26698 ./run_glue_pissa.py \
+  HF_ENDPOINT=https://hf-mirror.com accelerate launch --num_processes 4 --main_process_port 26697 ./run_glue_pissa.py \
   --model_name_or_path FacebookAI/roberta-base  \
   --task_name ${task_name} \
   --do_train --do_eval \
