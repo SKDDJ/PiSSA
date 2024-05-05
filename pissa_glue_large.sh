@@ -1,6 +1,4 @@
 #!/bin/bash
-
-export TRANSFORMERS_CACHE=/root/.cache/huggingface/hub
 export HF_HOME=/root/.cache/huggingface
 export XDG_CACHE_HOME=/root/.cache
 
@@ -17,7 +15,7 @@ declare -A bs=(["mnli"]=32 ["sst2"]=32 ["mrpc"]=32 ["cola"]=32 ["qnli"]=32 ["qqp
 declare -A ml=(["mnli"]=128 ["sst2"]=128 ["mrpc"]=512 ["cola"]=128 ["qnli"]=512 ["qqp"]=512 ["rte"]=512  ["stsb"]=512 )
 
 # roberta large LoRA
-declare -A lr=(["mnli"]="3e-4" ["sst2"]="4e-4" ["mrpc"]="3e-4" ["cola"]="2e-4" ["qnli"]="2e-4" ["qqp"]="3e-4" ["rte"]="4e-4"  ["stsb"]="2e-4" )
+declare -A lr=(["mnli"]="4e-4" ["sst2"]="4e-4" ["mrpc"]="3e-4" ["cola"]="2e-4" ["qnli"]="2e-4" ["qqp"]="3e-4" ["rte"]="4e-4"  ["stsb"]="2e-4" )
 
 declare -A metrics=(["mnli"]="accuracy" ["mrpc"]="accuracy" ["qnli"]="accuracy" ["qqp"]="accuracy" ["rte"]="accuracy" ["sst2"]="accuracy" ["stsb"]="pearson" ["cola"]="matthews_correlation")
 
@@ -39,7 +37,7 @@ run(){
   export WANDB_PROJECT=5-5-bf16-pissa_large_hp_lora_glue
   export WANDB_NAME=large-pissa-${task_name}-r-${rank}-target_modules-${target_modules}-seed-${seed}-bs-${per_device_train_batch_size}-lr-${learning_rate}-epochs-${num_train_epochs}
 
-  HF_ENDPOINT=https://hf-mirror.com accelerate launch --num_processes 5 --main_process_port 26698 ./run_glue_pissa.py \
+  HF_ENDPOINT=https://hf-mirror.com accelerate launch --num_processes 6 --main_process_port 26698 ./run_glue_pissa.py \
   --model_name_or_path FacebookAI/roberta-large  \
   --task_name ${task_name} \
   --do_train --do_eval \
@@ -63,7 +61,8 @@ run(){
   --overwrite_output_dir
 }
 
-task_base=('cola' 'mrpc' 'mnli' 'qqp' 'qnli' 'rte' 'sst2' 'stsb' )
+# task_base=('cola' 'mrpc' 'mnli' 'qqp' 'qnli' 'rte' 'sst2' 'stsb' )
+task_base=('mnli' )
 
 for task in "${task_base[@]}"; do
     run $task
